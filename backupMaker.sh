@@ -28,11 +28,13 @@ case "$choice" in
         # makes backup
         sudo rsync -aAXv "$src" "$backupDir"
         
+
+        # The below does not work, but updating perms is a good idea.
         # adjust ownerhsip of backup to root
-        sudo chown  -R root:root "$backupDir"
+        # sudo chown  -R root:root "$backupDir"
         
         # restricts access to root
-        sudo chmod -R 500 "$backupDir"
+        # sudo chmod -R 500 "$backupDir"
         
         echo "Backup of $src created at $backupDir"
         exit 0
