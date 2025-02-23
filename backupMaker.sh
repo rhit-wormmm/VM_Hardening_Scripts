@@ -26,7 +26,7 @@ case "$choice" in
             mkdir "$backupDir"
         fi
         # makes backup
-        sudo rsync -aAXv "$src" "$backupDir"
+        sudo rsync -aAXv "$src/" "$backupDir/"
         
 
         # The below does not work, but updating perms is a good idea.
@@ -54,7 +54,7 @@ case "$choice" in
             exit 1
         fi
         
-        sudo rsync -aAXv --delete "$backupDir" "$src"
+        sudo rsync -aAXv --delete "$backupDir/" "$src/"
         
         echo "Restored $src!"
         exit 0
