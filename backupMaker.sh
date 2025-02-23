@@ -22,19 +22,19 @@ case "$choice" in
         read -r -p "Enter directory to place backup : " backupDir
         
         # makes directory
-        if  [ ! -d "$HOME/$backupDir" ]; then
-            mkdir "$HOME/$backupDir"
+        if  [ ! -d "$backupDir" ]; then
+            mkdir "$backupDir"
         fi
         # makes backup
-        sudo rsync -aAXv "$src" "$HOME/$backupDir"
+        sudo rsync -aAXv "$src" "$backupDir"
         
         # adjust ownerhsip of backup to root
-        chown  -R root:root "$HOME/$backupDir"
+        sudo chown  -R root:root "$backupDir"
         
         # restricts access to root
-        chmod -R 500 "$HOME/$backupDir"
+        sudo chmod -R 500 "$backupDir"
         
-        echo "Backup of $src created at $HOME/$backupDir"
+        echo "Backup of $src created at $backupDir"
         exit 0
     ;;
     2)
@@ -52,7 +52,7 @@ case "$choice" in
             exit 1
         fi
         
-        sudo rsync -aAXv --delete "$HOME/$backupDir" "$src"
+        sudo rsync -aAXv --delete "$backupDir" "$src"
         
         echo "Restored $src!"
         exit 0
