@@ -29,7 +29,7 @@ case "$choice" in
         sudo rsync -aAXv "$src/" "$backupDir"
         
 
-        # The below does not work, but updating perms is a good idea.
+        # I think updating perms of the directory may affect the backup. 
         # adjust ownerhsip of backup to root
         # sudo chown  -R root:root "$backupDir"
         
