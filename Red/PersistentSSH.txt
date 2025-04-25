@@ -1,0 +1,12 @@
+Interesting thread on Persistent SSH connections
+Thread was for a proxy
+https://superuser.com/questions/1700726/how-to-create-persistent-ssh-connection-between-two-servers-in-systemctl
+
+
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/ssh -f -N -L 127.0.0.1:9999:api.domain.com:443 remote-server
+
+
+in /etc/systemd/system/proxy.service
